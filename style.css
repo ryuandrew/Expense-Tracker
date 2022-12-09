@@ -4,6 +4,11 @@
     --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0.24);
     --plus: #2ecc71;
     --minus: #c0392b;
+    --color-primary: #4db5ff;
+    --color-primary-variant: rgba(77, 181, 255, 0.4);
+    --color-white: #fff;
+    --color-light: hsla(0, 0%, 100%, 0.6);
+    --color-dark-grey: hsla(210, 8%, 45%, 0.325);
 }
 
 * {
@@ -12,7 +17,7 @@
 
 body {
     /* background-color: #f7f7f7; */
-    background-color: darkgray;
+    background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,10 +25,10 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: "Lato", sans-serif;
+    color: white;
 }
 
 .container {
-    /* background-color: aqua; */
     margin: 30px auto;
     width: 350px;
 }
@@ -45,7 +50,9 @@ h4 {
 }
 
 .inc-exp-container {
-    background-color: white;
+    /* background-color: white; */
+    background: var(--color-dark-grey);
+    border: 2px solid var(--color-primary-variant);
     box-shadow: var(--box-shadow);
     padding: 20px;
     display: flex;
@@ -84,12 +91,14 @@ label {
 
 input[type="text"],
 input[type="number"] {
-    border: 1px solid #dedede;
+    border: 2px solid var(--color-primary-variant);
     border-radius: 5px;
     display: block;
     font-size: 16px;
     padding: 10px;
     width: 100%;
+    background: var(--color-dark-grey);
+    color: white;
 }
 
 .btn {
@@ -130,16 +139,27 @@ input[type="number"] {
 }
 
 .list > li.plus {
-    border-right: 5px solid var(--plus);
+    /* border-right: 5px solid var(--plus); */
+    background: var(--color-dark-grey);
+    border: 2px solid var(--plus);
+    color: white;
+    /* white-space: pre-wrap;
+    word-wrap: break-word; */
 }
 
 .list > li.minus {
-    border-right: 5px solid var(--minus);
+    /* border-right: 5px solid var(--minus); */
+    background: var(--color-dark-grey);
+    border: 2px solid var(--minus);
+    color: white;
+    /* white-space: pre-wrap;
+    word-wrap: break-word; */
 }
 
 .delete-btn {
     background-color: #e7433c;
     border: 0;
+    border-radius: 4px;
     color: white;
     font-size: 20px;
     line-height: 20px;
@@ -151,8 +171,25 @@ input[type="number"] {
     opacity: 0;
     transition: opacity 0.3s ease;
     cursor: pointer;
+    margin-left: -5px;
 }
 
 .list li:hover .delete-btn {
     opacity: 1;
+}
+
+@media screen and (max-width: 1920px) {
+    .container {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .container {
+        width: 80%;
+    }
 }

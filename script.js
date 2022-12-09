@@ -59,11 +59,10 @@ const updateValues = () => {
         .toFixed(2);
     console.log(income);
 
-    const expense = (
-        amounts
-            .filter((item) => item < 0)
-            .reduce((accumulator, item) => (accumulator += item), 0) * -1
-    ).toFixed(2);
+    const expense = amounts
+        .filter((item) => item < 0)
+        .reduce((accumulator, item) => (accumulator += item), 0)
+        .toFixed(2);
     console.log(expense);
 
     balance.innerText = `$${total}`;
@@ -86,8 +85,13 @@ const addTransaction = (e) => {
         console.log(transaction);
 
         transactions.push(transaction);
+
         addTransactionDOM(transaction);
+
         updateValues();
+
+        updateLocalStorage();
+
         text.value = "";
         amount.value = "";
     }
@@ -102,7 +106,14 @@ const generateId = () => {
 const removeTransaction = (id) => {
     transactions = transactions.filter((transaction) => transaction.id !== id);
 
+    updateLocalStorage();
+
     init();
+};
+
+// Update local storage transactions
+const updateLocalStorage = () => {
+    localStorage.setItem("transactions", JSON.stringify(transactions));
 };
 
 // Init app
